@@ -341,7 +341,9 @@
 
         //your code...
 
-        higherThanFive = fivePlus.filter(num )
+        higherThanFive = fivePlus.filter(num => num > 5);
+
+        console.log(higherThanFive)
 
 
 
