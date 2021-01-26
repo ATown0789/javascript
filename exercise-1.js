@@ -4,8 +4,19 @@
         // Write a JavaScript function that iterates the integers from 1 to 100. For multiples of 3 print "TEK" instead of the number and for multiples of 5, print "camp." For numbers that are multiples of both 3 and 5, print "TEKcamp."
 
         //your code...
-        function tekCamp() {}
-        // tekCamp();
+        function tekCamp() {
+            for(let i = 1; i <= 100; i++){
+                if(i%3 == 0 && i%5 ==0)
+                    console.log("TEKcamp");
+                else if(i%3 == 0)
+                    console.log("TEK");
+                else if(i%5 == 0)
+                    console.log("camp");
+                else
+                    console.log(i);
+            }
+        }
+        tekCamp();
 
 
 
@@ -13,22 +24,18 @@
         //Write a function that converts the current temperature from Fahrenheit to Celsius. 
 
         //your code...
-        function farenheitCelsius() {
-
+        function farenheitCelsius(far) {
+            return (far-32)*(5/9);
         }
-
-
 
 
         /************************************************************************************/
         //Write a function that converts the Celsius temperature back to Fahrenheit. 
 
         //your code...
-        function celsiusFarenheit() {
-
+        function celsiusFarenheit(cel) {
+            return (cel *(9/5))+32;
         }
-
-
 
 
 
@@ -37,23 +44,21 @@
 
         //your code...
         function canVote(age) {
+            if(age < 18)
             return false;
+            else if (age >= 18)
+            return true;
         }
-
-
-
-
-
-
 
         /************************************************************************************/
         // Write a function that converts a string to an array. It should return an array.  
 
         //your code...
-        function strToArr() {
-            return [];
+        function strToArr(str) {
+            return str.split('');
         }
 
+        console.log(strToArr('hello'));
 
 
 
@@ -65,10 +70,14 @@
 
         //your code...
         function reversePhone(number) {
-            
+            let reverse = []
+            let numArray = number.toString().split('');
+            numArray.forEach(e => reverse.unshift(e));
+
+           return parseInt(reverse.join(''));
         }
 
-
+            console.log(reversePhone(8176026329));
 
 
 
@@ -77,7 +86,8 @@
 
         //your code...
 
-
+        const makeCar = (make, model, year, color) => ({make: make, model: model, year: year, color: color});
+        
 
 
 
@@ -89,7 +99,17 @@
 
         //your code...
 
-
+            function oddEven(numArr) {
+                const oddEvenObj = {};
+                numArr.map(num => {
+                    if(num%2 == 0)
+                    oddEvenObj[num] = 'even';
+                    else
+                    oddEvenObj[num] = 'odd';
+                });
+                return oddEvenObj;
+            }
+           console.log(oddEven([10,23,3,4]));
 
 
 
@@ -98,7 +118,9 @@
         /************************************************************************************/
         const numbers = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
         // Write a "for" loop that console.log()'s the first value in the  array, and every 3rd number, i.e. 0, 3, 6, 9: the zeroth, third, sixth, and ninth values.
-
+            for(let i = 0; i < numbers.length; i+=3) {
+                console.log(numbers[i]);
+            }
         //your code...
 
 
@@ -107,22 +129,40 @@
         const foodArray = [ 'potatoes', 'tamales', 'lemon','strawberries','chocolate', 'pudding', {program : 'TEKcamp'} ];
         //access the value of the last element of the array and set it to a variable called school.  print the school variable to the console.
 
+        const school =foodArray.pop();
+
+        console.log(school);
+        
         const adjectiveArray = [ 'salty', 'spicy', 'sour', 'sweet', 'rich','creamy','amazing'];
         // Using both the foodArray and the adjectiveArray, write "for" loop that console.log()'s a sentence for each corresponding value in the arrays. Add the word "is" or "are" depending on if the food is singular or plural.  i.e. "Potatoes are salty", "Lemon is sour".
 
-
+        let art = '';
+        for(let i = 0; i < foodArray.length; i++) {
+                foodWordArr = foodArray[i].split('');
+                if(foodWordArr[foodWordArr.length-1] != 's')
+                    art = 'is';
+                else
+                    art = 'are';
+                console.log(`${foodArray[i]} ${art} ${adjectiveArray[i]}`);
+            }
+       
         /************************************************************* */
         // Refactor the for() loop to be a while loop.
-
+        let i = 0;
+        while(i < foodArray.length) {
+            foodWordArr = foodArray[i].split('');
+            if(foodWordArr[foodWordArr.length-1] != 's')
+                art = 'is';
+            else
+                art = 'are';
+            console.log(`${foodArray[i]} ${art} ${adjectiveArray[i]}`);
+            i++
+        }
 
         for(let i=0; i<10; i++) {
             // console.log(" the value of i in the loop is : " + i);
+            console.log(" the value of i in the loop is : " + i)
         }
-
-
-        //your code...
-
-
 
 
         /************************************************************* */
@@ -131,6 +171,12 @@
 
         //your code...
 
+        const sum = (a,b) => a + b;
+        const mul = (a,b) => a * b;
+        const div = (a,b) => a / b;
+        const pow = (a,b) =>  Math.pow(a,b);
+
+        console.log(div(mul(sum(30,2),20),pow(10,2)));
 
         /************************************************************* */
         //Determine whether the following values are "truthy" or "falsy".  console.log() the value, whether the value is 'truthy' or 'falsy', along with your reasoning why using String interpolation values : 
@@ -138,17 +184,36 @@
         // ex : 3 is truthy, because it is a number, and numbers are type coerced as 'true' when performing logical (boolean) operations.
 
         // 20
+        console.log(`20 is ${!!20 ? 'truthy' : 'falsey'} because it's a number and non-zero numbers are type coerced as ${!!20 ? 'true' : 'false'} when performing logical operations in JS`);  
         // 0
+        console.log(`0 is ${!!0 ? 'truthy' : 'falsey'} because it's a zero and zeros are type coerced as ${!!'zero' ? 'true' : 'false'} when performing logical operations in JS`); 
         // "zero";
-        // const zero = 20;
+        console.log(`'zero' is ${!!'zero' ? 'truthy' : 'falsey'} because it's a string and strings are type coerced as ${!!0 ? 'true' : 'false'} when performing logical operations in JS`); 
+        const zero = 20;
+        console.log(`The variable zero is ${!!zero ? 'truthy' : 'falsey'} because it's a number and non-zero numbers are type coerced as ${!!zero ? 'true' : 'false'} when performing logical operations in JS`);
         // null
+        console.log(`'null' is ${!!null ? 'truthy' : 'falsey'} because it's nothing and nothing is type coerced as ${!!null ? 'true' : 'false'} when performing logical operations in JS`);
         // "0"
+        console.log(`'0' is ${!!'0' ? 'truthy' : 'falsey'} because it's a number and non-zero numbers are type coerced as ${!!'0' ? 'true' : 'false'} when performing logical operations in JS`);
         // !""
+        console.log(`!"" is ${!!!"" ? 'truthy' : 'falsey'} because an empty string is type coerced as false so the opposite is type coerced as ${!!!"" ? 'true' : 'false'} when performing logical operations in JS`);
         // {}
+        console.log(`{} is ${!!{} ? 'truthy' : 'falsey'} because it's an empty object and is type coerced as ${!!{} ? 'true' : 'false'} when performing logical operations in JS`);
         // () => {console.log("hello TEKcamp!");
+
         // 125
+        console.log(`125 is ${!!125 ? 'truthy' : 'falsey'} because it's an empty object and is type coerced as ${!!125 ? 'true' : 'false'} when performing logical operations in JS`);
         // undefined
+        console.log(`undefined is ${!!undefined ? 'truthy' : 'falsey'} because it's undefined and is type coerced as ${!!undefined ? 'true' : 'false'} when performing logical operations in JS`);
+
         // ""
+        console.log(`"" is ${!!"" ? 'truthy' : 'falsey'} because it's an empty string and is type coerced as ${!!"" ? 'true' : 'false'} when performing logical operations in JS`);
+       
+       //Almost got this to work... but it has too many exceptions to make it any easier. 
+        const zero = 20;
+        let testArr = [20, 0, "zero", zero, null, '0', !"", {}, 125, undefined, ""]
+
+        testArr.forEach(e => console.log(`'${e}' is ${!!e ? 'truthy' : 'falsey'} because it's a(n) ${typeof(e)} ${e === 0 ? 'and the number 0': 'and' } is type coerced as ${!!e ? 'true' : 'false'} when performing logical operations in JS`));
 
 
 
@@ -156,40 +221,38 @@
         /************************************************************* */
         // Refactor the following code using a switch statement:
 
-        const day = "friday";
+        const day = "monday";
 
-        if(day === "monday") {
-            console.log("we got a long week ahead of us...");
-        } else if(day === "tuesday") {
-            console.log("tuesday's are still beterr than mondays, but LONG way to go still");
-        } else if (day === "wednesday") {
-            console.log("We are smack dab in the middle of the week");
-        } else if (day === "thursday") {
-            console.log("Thursday night... the mood is right");
-        } else if (day === "friday") {
-            console.log("TGIF.  Friday truly is the best day of the week!")
-        } else {
-            console.log("It's a weekend!")
+        switch (day) {
+            case 'monday' :
+                console.log("we got a long week ahead of us...");
+                break;
+            case "tuesday":
+                console.log("tuesday's are still beterr than mondays, but LONG way to go still");
+                break;
+            case "wednesday":
+                console.log("We are smack dab in the middle of the week");
+                break;
+            case "thursday":
+                console.log("Thursday night... the mood is right");
+                break;
+            case "friday":
+                console.log("TGIF.  Friday truly is the best day of the week!")
+                break;
+            default:
+                console.log("It's a weekend!");
         }
-
 
 
         /************************************************************* */
         // Refactor the following statements to use ternary expressions:
 
         const age = 10;
-        if (age > 21) console.log("adult"); else {
-            console.log("minor");
-        }
+        age > 21 ? console.log("adult") : console.log("minor");
 
-        if (age > 13 && age < 19) console.log('teen'); else {
-            console.log("not a teenager");
-        };
+        age > 13 && age < 19 ? console.log('teen') : console.log("not a teenager");
 
-        if (age > 65) console.log("retired"); else {
-            console.log("still working...");
-        }
-
+        age > 65 ? console.log("retired"): console.log("still working...");
 
         /************************************************************* */
         //Create an object literal representing yourself.  Set it equal to a variable that appropriately describes the object.  Include the following properties:
@@ -209,40 +272,55 @@
 
         //your code...
 
+        const myObject = {
+            name: 'Anthony',
+            age: '31',
+            gender: 'Male',
+            healthy: 'Yes',
+            hobbies: ['eating','music','games','family'],
+            profession: 'Freelance Developer',
+            education: 'BA Music Education',
+            learn: function() {
+                console.log(`${this.name} is learning javascript`)
+            },
+            gotSick: function() {
+                this.healthy = `No :'(`;
+                console.log(`Is ${this.name} healthy? ${this.healthy}`);
+            },
+        }
+
+        myObject.gotSick();
+
 
 
         /************************************************************* */
 
-        {
+        
             const year = 2021;
             const nums = [1,2,3,4,5];
             let sum = 0;
             let i = 0;
-            const doubled = [];
+            let doubled = [];
 
             //Refactor the following statements into expressions
 
 
             // 1.
-            if(year > 2000 && year < 2100) {
-                console.log("welcome to the 21st century");
-            }
+            
+            year > 2000 && year < 2100 ? 
+                console.log("welcome to the 21st century") : year;
             
             // 2.
-            for(let i=0; i<nums.length; i++) {
-                sum += nums[i];
-            }
+            nums.forEach(num => sum += num);
             console.log(sum);
             
             
             // 3.
-            while(i < nums.length) {
-                doubled.push(nums[i]*2);
-                i++;
-            }
+            doubled = nums.map(num => num*2);
+
             
             console.log(doubled);
-        }
+        
 
 
         /************************************************************* */
@@ -253,6 +331,7 @@
 
         //your code...
 
+        let square = nums.map(num => num*num);
 
 
 
@@ -262,7 +341,7 @@
 
         //your code...
 
-
+        higherThanFive = fivePlus.filter(num )
 
 
 
