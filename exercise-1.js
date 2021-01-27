@@ -129,7 +129,7 @@
         const foodArray = [ 'potatoes', 'tamales', 'lemon','strawberries','chocolate', 'pudding', {program : 'TEKcamp'} ];
         //access the value of the last element of the array and set it to a variable called school.  print the school variable to the console.
 
-        const school =foodArray.pop();
+        const school = foodArray[foodArray.length-1].program;
 
         console.log(school);
         
@@ -138,24 +138,32 @@
 
         let art = '';
         for(let i = 0; i < foodArray.length; i++) {
-                foodWordArr = foodArray[i].split('');
-                if(foodWordArr[foodWordArr.length-1] != 's')
-                    art = 'is';
-                else
-                    art = 'are';
-                console.log(`${foodArray[i]} ${art} ${adjectiveArray[i]}`);
+                if(typeof(foodArray[i]) === 'object')
+                    console.log(`${school} is ${adjectiveArray[i]}`)
+                else{
+                    foodWordArr = foodArray[i].split('');
+                    if(foodWordArr[foodWordArr.length-1] != 's')
+                        art = 'is';
+                    else
+                        art = 'are';
+                    console.log(`${foodArray[i]} ${art} ${adjectiveArray[i]}`);
+                }
             }
        
         /************************************************************* */
         // Refactor the for() loop to be a while loop.
         let i = 0;
         while(i < foodArray.length) {
-            foodWordArr = foodArray[i].split('');
-            if(foodWordArr[foodWordArr.length-1] != 's')
-                art = 'is';
-            else
-                art = 'are';
-            console.log(`${foodArray[i]} ${art} ${adjectiveArray[i]}`);
+            if(typeof(foodArray[i]) === 'object')
+                    console.log(`${school} is ${adjectiveArray[i]}`)
+                else{
+                    foodWordArr = foodArray[i].split('');
+                    if(foodWordArr[foodWordArr.length-1] != 's')
+                        art = 'is';
+                    else
+                        art = 'are';
+                    console.log(`${foodArray[i]} ${art} ${adjectiveArray[i]}`);
+                }
             i++
         }
 
@@ -333,7 +341,7 @@
 
         let square = nums.map(num => num*num);
 
-
+        console.log(square);
 
 
         const fivePlus = [1,3,5,7,9,1,3,5,2,3,1,23,4,232,3,4,1,2,2,2,3,4,4,1,12,11,23,3,4,5];
@@ -351,15 +359,22 @@
         // Create an array of 20 randomly generated integers.  Calculate the sum of the elements in the array.
 
         //your code...
+        const randArr = [];
+        let sum = 0;
+        let randNum = 0;
+        for(let i = 0; i < 20; i++) {
+            randNum = Math.floor(Math.random() * Math.floor(100));
+            randArr.push(randNum);
+            sum += randNum;
+        }
 
-
-
+        console.log(randArr, " ", sum);
 
 
         const showNums = [12,22,33,44,55,66,77,88,99,101];
         //Print out the value of each number divided by 2.  There is no need to store the output in an array.
 
-
+        showNums.forEach(e => console.log(e/2));
 
         /************************************************************* */
         /* Chess pieces have point values associated with them.  
@@ -374,12 +389,43 @@
         ['android'] => chessCalc() => null
 
         */
-
         function chessCalc(pieces) {
-            //your code here
+            let sum = 0;
+            const piecesLower = pieces.map(e => e.toString().toLowerCase());
+            const piecePoints = piecesLower.map(p => piecesCheck(p));
+            piecePoints.forEach(p => sum += p);
+            return sum == 0 ? null : sum;
         }
 
+        function piecesCheck(p) {
 
+            switch(p) {
+                case 'king':
+                    return null;
+                    break;
+                case 'queen':
+                    return 9;
+                    break;
+                case 'rook':
+                    return 5;
+                    break;
+                case 'bishop':
+                    return 3;
+                    break;
+                case 'knight':
+                    return 3;
+                    break;
+                case 'pawn':
+                    return 1;
+                    break;
+                default:
+                    return null;
+            }
+        }
+
+        const input = ['king','queen','pawn','pawn','pawn','bishop'] ;
+
+        console.log(chessCalc(input));
 
 
         /************************************************************* */
@@ -387,13 +433,16 @@
         const ones = [1,11,111,1111,11111,111111,1111111,11111111,111111111,1111111111];
         //reverse the array, without modifying / `mutating` the ones array.
 
+        const newOnes = [] 
+        ones.forEach(e => newOnes.unshift(e))
 
+        console.log(ones, " ", newOnes)
 
         /************************************************************* */
         //create a function called performer(cb) that takes in a callback function and runs that callback function.  The function should return the output of the callback function.
-
+        
         function performer(cb) {
-            //code goes here
+           return cb();
         }
 
 
@@ -464,17 +513,19 @@
 
         /************************** */  
         // Find all devs older than 24
-
+        const oldDevs = devs.filter(e => e.age > 24);
         //your code here...
 
-
+        console.log(oldDevs);
 
         /************************** */  
         // Remove all people who are not developers (i.e. no tech stack)
 
         //your code here...
 
+        const onlyDevs = devs.filter(e => e['tech_stack'] !== null)
 
+        console.log(onlyDevs)
 
         /************************** */  
         // Calculate the total age of all the devs
