@@ -734,18 +734,35 @@
         /************************************************************* */
         //- Create a Higher Order Function called multiple(x) that takes a single parameter.  This HOF should return another function fn(y) that accepts another single parameter y.  This inner function should compute the product of it's parameter with the parameter passed into multiple.  Use this returned "first-class" function to compute triples of any given number.
 
-        //your code...
+        function multiple(x) {
+            return function(y){
+               return x*y;
+            };
+        }
 
+       function getTripple(num) {
+           
+            return multiple(num)(3);
+       }
+
+       console.log(getTripple(6));
 
         //- Write an outer function called stockGain that has cost basis (basis) as a parameter; declare a variable called message that holds " is how much the stock has increased".  Return an inner function with years (yrs) as a parameter and declare a variable for growth rate (r) of 5%. Console log your calculation.
 
-        //your code
+        function stockGain(basis){
+            const message = " is how much the stock has increased"
+                return function(yrs){
+                    const r = .05;
+                    return (basis*yrs*r) + message;
+                }
+        }
 
 
         // Once finished, declare a variable called futureValue that holds your stockGain function and enter any amount for the cost basis and a number for the number of years.  Run the function returned by the higher order function to display the future value of the stock.  
 
-        //your code...
+        const futureValue = stockGain(10000)(30);
 
+        console.log(futureValue);
 
 
 // DO NOT DELETE THIS EXPORT
