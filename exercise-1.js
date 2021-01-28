@@ -652,37 +652,84 @@
         /************************************************************* */
         //Research a new feature of ES6+ and create an example of it's use case here.  Be sure to write comments explaining what the feature is and why it is useful.
 
-
-            //your code...
+        //the spread operator allows for a lot of cool things
+        /* 
+        Copying an array
+        Concatenating or combining arrays
+        Using Math functions
+        Using an array as arguments
+        Adding an item to a list
+        Adding to state in React
+        Combining objects
+        Converting NodeList to an array  
+        */ 
+        //A simple example is what I did above for Math.max()
+        /*
+        
+        Normally Math.max would see an array as a single argument, but because of the spread operator, it now sees the array as individual arguments. 
+        
+        It's very useful, but don't get it confused with destructuring which uses the same "..." but in a different context.
+        
+        */
+        
 
 
 
         /************************************************************* */
         //Add an example of the 5 primary JavaScript data types to the given mapObj.  The key is an example data type, and the value is the name of the data type.  An object data type has already been set as the 1st key / val pair.
-
+        const myObj = {company: "TEKsystems"};
         const mapObj = new Map();
-        mapObj.set({company : "TEKsystems"},"object");
+        mapObj.set(myObj,"object")
+                .set(7, 'number')
+                .set('string', 'string')
+                .set(true, 'boolean')
+                .set([1,2,3,4], 'array');
 
-        console.log(mapObj.has({company : "TEKsystems"}));
+        console.log(mapObj.has(myObj));
 
+        console.log("It was false because you can't directly access the objects reference without declaring it as a variable")
         //The above console.log() statmeent returns false.  Write another console.log() statement explaining why this line of code prints false.  Refactor the code `mapObj.set()`, so the code : `mapObj.has() returns true.  The goal is to successfully check and see if {company : "TEKsystems"} exists in the mapObj.
 
-        //your code...
-
-
         //loop through the mapObj and create a new array of only the data types, leaving out the example keys of the mapObj.  Use array methods to do this.  Example output : ['string',number','boolean',array','object']
+        const mapArr = [];
 
+        mapObj.forEach(value => mapArr.push(`${value}`));
+
+        console.log(mapArr);
 
         /************************************************************* */
         //Create 4 mathematical function expressions, add,subtract,multiply,divide.  put them in an array, and create a doMath() function that randomly selects one of the mathematical operations whenever it is invoked.  The doMath() function should print to the console the mathetmatical function that was carried out.  The doMath() function should return the computed value of any operation performed.
 
         // ex : 2,3 => doMath(2,3) => adding : 5
-        const operations = [];
-        function doMath(x,y) {};
+        const addi = (a,b) => a + b;
+        const subt = (a,b) => a - b;
+        const mult = (a,b) => a * b;
+        const divi = (a,b) => a / b;
+        const getText = (iNum) => {
+            switch(iNum){
+                case 0:
+                    return "Adding: "
+                    break;
+                case 1:
+                    return "Subtracting: "
+                    break;
+                case 2:
+                    return "Multiplying: "
+                    break;
+                case 3:
+                    return "Dividing: "
+                    break;          
+            }
+        }
 
-        //your code...
+        const operations = [addi, subt, mult, divi];
+        function doMath(x,y) {
+            const randInt = Math.floor(Math.random() * Math.floor(4));
+            const operText = getText(randInt);
+            console.log(operText, operations[randInt](x, y))
+        };
 
-
+        doMath(3,5);
 
         /************************************************************* */
         //- Create a Higher Order Function called multiple(x) that takes a single parameter.  This HOF should return another function fn(y) that accepts another single parameter y.  This inner function should compute the product of it's parameter with the parameter passed into multiple.  Use this returned "first-class" function to compute triples of any given number.
