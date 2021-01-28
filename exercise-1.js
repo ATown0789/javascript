@@ -208,7 +208,7 @@
         // {}
         console.log(`{} is ${!!{} ? 'truthy' : 'falsey'} because it's an empty object and is type coerced as ${!!{} ? 'true' : 'false'} when performing logical operations in JS`);
         // () => {console.log("hello TEKcamp!");
-
+        //falsey
         // 125
         console.log(`125 is ${!!125 ? 'truthy' : 'falsey'} because it's an empty object and is type coerced as ${!!125 ? 'true' : 'false'} when performing logical operations in JS`);
         // undefined
@@ -218,7 +218,7 @@
         console.log(`"" is ${!!"" ? 'truthy' : 'falsey'} because it's an empty string and is type coerced as ${!!"" ? 'true' : 'false'} when performing logical operations in JS`);
        
        //Almost got this to work... but it has too many exceptions to make it any easier. 
-        const zero = 20;
+       
         let testArr = [20, 0, "zero", zero, null, '0', !"", {}, 125, undefined, ""]
 
         testArr.forEach(e => console.log(`'${e}' is ${!!e ? 'truthy' : 'falsey'} because it's a(n) ${typeof(e)} ${e === 0 ? 'and the number 0': 'and' } is type coerced as ${!!e ? 'true' : 'false'} when performing logical operations in JS`));
@@ -306,8 +306,7 @@
         
             const year = 2021;
             const nums = [1,2,3,4,5];
-            let sum = 0;
-            let i = 0;
+            let sumNum = 0;
             let doubled = [];
 
             //Refactor the following statements into expressions
@@ -319,8 +318,8 @@
                 console.log("welcome to the 21st century") : year;
             
             // 2.
-            nums.forEach(num => sum += num);
-            console.log(sum);
+            nums.forEach(num => sumNum += num);
+            console.log(sumNum);
             
             
             // 3.
@@ -334,12 +333,12 @@
         /************************************************************* */
         // Use array methods to solve the following problems.
 
-        const nums = [1,2,3,4,5];
+        const nums1 = [1,2,3,4,5];
         // Square every number in the array.  Store the squares in a new array.
 
         //your code...
 
-        let square = nums.map(num => num*num);
+        let square = nums1.map(num => num*num);
 
         console.log(square);
 
@@ -360,15 +359,15 @@
 
         //your code...
         const randArr = [];
-        let sum = 0;
+        sumNum1 = 0;
         let randNum = 0;
         for(let i = 0; i < 20; i++) {
             randNum = Math.floor(Math.random() * Math.floor(100));
             randArr.push(randNum);
-            sum += randNum;
+            sumNum1 += randNum;
         }
 
-        console.log(randArr, " ", sum);
+        console.log(randArr, " ", sumNum1);
 
 
         const showNums = [12,22,33,44,55,66,77,88,99,101];
@@ -390,11 +389,11 @@
 
         */
         function chessCalc(pieces) {
-            let sum = 0;
+            let sumNum2 = 0;
             const piecesLower = pieces.map(e => e.toString().toLowerCase());
             const piecePoints = piecesLower.map(p => piecesCheck(p));
-            piecePoints.forEach(p => sum += p);
-            return sum == 0 ? null : sum;
+            piecePoints.forEach(p => sumNum2 += p);
+            return sumNum2 == 0 ? null : sumNum2;
         }
 
         function piecesCheck(p) {
@@ -532,38 +531,55 @@
 
         //your code here...
 
+        let sumNum3 = 0;
+
+        devs.forEach(e => sumNum3 += e.age)
+
+        console.log(sumNum3)
 
 
         /************************** */  
         // Find all female devs
 
-        //your code here...
+
+        const femDev = devs.filter(e => e.gender === 'f' || e.gender === 'F');
+
+        console.log(femDev)
 
 
         /************************** */  
         // lowercase the genders of every dev
 
-        //your code here...
+        devs.forEach(e => e.gender = e.gender.toLowerCase())
 
-
-
+        console.log(devs)
+ 
         /************************** */  
         // Sort the developers by name
 
-        //your code here
+            devs.sort((a,b) => {
+                
+                return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+            });
 
+            console.log(devs);
 
         /************************** */  
         // Sort the devs by age in descending order
 
-        //your code here
+        devs.sort((a,b) => b.age - a.age);
 
+        console.log(devs)
 
 
         /************************** */  
         // Sort the male coders by age
 
-        //your code here
+        const malDev = devs.filter(e => e.gender === 'm');
+
+        malDev.sort((a,b) => a.age - b.age);
+        
+        console.log(malDev);
 
 
         /************************** */  
@@ -575,24 +591,63 @@
         Dr. Patel is not a developer.
         */
 
-        //your code here
+            devs.forEach(e => {
+                
+                if(e.tech_stack === null)
+                    console.log(`${e.name} is not a developer`);
+                else{
+                    let stackArr = e.tech_stack;
+                    let addAnd = "and " + stackArr.slice(-1);
+                    stackArr.splice(-1,1,addAnd);
+                    let stackList = stackArr.join(', ');
+                    console.log(`${e.name} specializes in ${stackList}`)
+                }
+            })
 
 
         /************************************************************* */
         // Write a function to find the maximum numerical value of the given array.  Get rid of any non numerical values.  Convert the strings that are numbers to an actual number data type.  ("one" => 1) ("1" => 1).  Use array methods to perform this task.  
         const numbersMixed = [2,23,1,2,1,1,1,2,2.5,20,200,2000,,{k:"val"},20000,19999,1878,140,23,4,"sk",true,true,"true-dat","nice","one","two","three","3","tea",[]];
 
-        function maxNumber(numbers) {
-            //your code...
+        function onlyNumbers(arr) {
+            const stringToNumbers = arr.map(e => {
+                if(typeof(e) === 'number')
+                    return e;
+                else if(e === 'one')
+                    return 1;
+                else if(e === 'two')
+                    return 2;
+                else if (e === 'three' || '3')
+                    return 3;
+                else
+                    return "not a number"
+            });
+
+            const onlyNums = stringToNumbers.filter(e => typeof(e) === 'number')
+
+            return onlyNums;
         }
+        
+        
+        function maxNumber(numbers) {
+           const numsArr = onlyNumbers(numbers);
+           return Math.max(...numsArr);
+
+        }
+
+        console.log(maxNumber(numbersMixed));
 
         //After the numbers array has been cleaned up to only have numbers in it, Write a function that sorts the modified numbers array.  Allow the function to sort the array in descending order as well.
 
-        function sortNums(numbers,desc=false) {
-            //your code...
+        function sortNums(numbers,desc = false) {
+            const onlyNums = onlyNumbers(numbers);
+            if(desc)
+                return onlyNums.sort((a,b) => b - a);
+            else
+                return onlyNums.sort((a,b) => a - b);
         };
 
-
+        console.log(sortNums(numbersMixed))
 
         /************************************************************* */
         //Research a new feature of ES6+ and create an example of it's use case here.  Be sure to write comments explaining what the feature is and why it is useful.
