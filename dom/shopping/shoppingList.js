@@ -5,7 +5,7 @@
 
     1. Create three variables that hold references to the following elements &lt;ul&gt; &lt;input&gt; &lt;button&gt; elements.
     
-    
+
     2. Create a function that will run in response to the button being clicked.
     
     
@@ -39,3 +39,14 @@
     
     
     10. Finally, use the focus() method to focus the input element ready for entering the next shopping list item.
+*/
+
+const ul = document.querySelector('ul');
+const input = document.querySelector('input');
+const button = document.querySelector('button');
+
+button.addEventListener('click',doSomething);
+
+function doSomething() {
+    const text = input.value;
+}
