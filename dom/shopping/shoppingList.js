@@ -49,4 +49,22 @@ button.addEventListener('click',doSomething);
 
 function doSomething() {
     const text = input.value;
+    input.value = "";
+
+    const li = document.createElement('li');
+    const span = document.createElement('span');
+    const newBtn = document.createElement('button');
+
+    li.appendChild(span);
+    li.appendChild(newBtn);
+
+    span.textContent = text;
+    newBtn.textContent = 'Delete';
+
+    ul.appendChild(li);
+    
+    newBtn.addEventListener('click',() => li.remove());
+
+    input.focus();
+
 }
