@@ -26,7 +26,7 @@ function runTime() {
     difTime = currentTime - startTime;
     
     second = Math.floor((difTime / 1000) % 60);
-    minute = Math.floor((difTime / 1000*60) % 60);
+    minute = Math.floor((difTime / (1000*60)));
     timeDisp.innerHTML = `${minute < 10 ? '0'+minute : minute}:${second < 10 ? '0'+second : second }`;
 }
 
