@@ -194,21 +194,21 @@
         // 20
         console.log(`20 is ${!!20 ? 'truthy' : 'falsey'} because it's a number and non-zero numbers are type coerced as ${!!20 ? 'true' : 'false'} when performing logical operations in JS`);  
         // 0
-        console.log(`0 is ${!!0 ? 'truthy' : 'falsey'} because it's a zero and zeros are type coerced as ${!!'zero' ? 'true' : 'false'} when performing logical operations in JS`); 
+        console.log(`0 is ${!!0 ? 'truthy' : 'falsey'} because it's a zero and zeros are type coerced as ${!!0 ? 'true' : 'false'} when performing logical operations in JS`); 
         // "zero";
-        console.log(`'zero' is ${!!'zero' ? 'truthy' : 'falsey'} because it's a string and strings are type coerced as ${!!0 ? 'true' : 'false'} when performing logical operations in JS`); 
+        console.log(`'zero' is ${!!'zero' ? 'truthy' : 'falsey'} because it's a string and strings are type coerced as ${!!'zero' ? 'true' : 'false'} when performing logical operations in JS`); 
         const zero = 20;
         console.log(`The variable zero is ${!!zero ? 'truthy' : 'falsey'} because it's a number and non-zero numbers are type coerced as ${!!zero ? 'true' : 'false'} when performing logical operations in JS`);
         // null
         console.log(`'null' is ${!!null ? 'truthy' : 'falsey'} because it's nothing and nothing is type coerced as ${!!null ? 'true' : 'false'} when performing logical operations in JS`);
         // "0"
-        console.log(`'0' is ${!!'0' ? 'truthy' : 'falsey'} because it's a number and non-zero numbers are type coerced as ${!!'0' ? 'true' : 'false'} when performing logical operations in JS`);
+        console.log(`'0' is ${!!'0' ? 'truthy' : 'falsey'} because it's a string and strings are type coerced as ${!!'0' ? 'true' : 'false'} when performing logical operations in JS`);
         // !""
         console.log(`!"" is ${!!!"" ? 'truthy' : 'falsey'} because an empty string is type coerced as false so the opposite is type coerced as ${!!!"" ? 'true' : 'false'} when performing logical operations in JS`);
         // {}
         console.log(`{} is ${!!{} ? 'truthy' : 'falsey'} because it's an empty object and is type coerced as ${!!{} ? 'true' : 'false'} when performing logical operations in JS`);
         // () => {console.log("hello TEKcamp!");
-        //falsey
+        console.log(`The function is truthy because everything other than the 6 falsy values are always truthy`)
         // 125
         console.log(`125 is ${!!125 ? 'truthy' : 'falsey'} because it's an empty object and is type coerced as ${!!125 ? 'true' : 'false'} when performing logical operations in JS`);
         // undefined
