@@ -43,12 +43,6 @@ describe("tekCamp()", () => {
         expect(console.log).toHaveBeenNthCalledWith(1,1);
     });
 
-    test.skip("tekCamp() on 2 console.logs 2", () => {
-        console.log = jest.fn();
-        exerciseOne.tekCamp();
-        expect(console.log).toHaveBeenNthCalledWith(2,"2");
-    });
-
     test("tekCamp() on 15 console.logs 'TEKcamp' ", () => {
         console.log = jest.fn();
         exerciseOne.tekCamp();
@@ -61,7 +55,7 @@ describe("tekCamp()", () => {
 describe("canVote()", () => {
 
     test("canVote() returns false", () => {
-        expect(exerciseOne.canVote(18)).toBe(false);
+        expect(exerciseOne.canVote(17)).toBe(false);
     })
 
     test("canVote(age = 21) returns true", () => {
