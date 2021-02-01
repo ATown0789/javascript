@@ -1,44 +1,82 @@
-console.log("time to start the timer!");
-
-const startBtn = document.querySelector("#start");
-const stopBtn = document.querySelector("#stop");
-const resetBtn = document.querySelector("#reset");
-const timeDisp = document.querySelector("#timeDisp");
-let difTime,
-    startTime,
+//declare global variables 
+let isRunning,
+    difTime,
+    pauseTime,
+    stopped = 0;
+let startTime,
     currentTime,
     interval,
     hour,
     minute,
     second;
 
+//set button and display elements to variables
+const startBtn = document.querySelector("#start");
+const stopBtn = document.querySelector("#stop");
+const resetBtn = document.querySelector("#reset");
+const timeDisp = document.querySelector("#timeDisp");
+
+//add event listeners to each button
 startBtn.addEventListener('click', startTimer);
 stopBtn.addEventListener('click', stopTimer);
 resetBtn.addEventListener('click', resetTimer);
 
+
 function startTimer() {
-    startTime = new Date().getTime();
-    interval = setInterval(runTime, 1000);
+    //check to see if timer is already running
+    if(!isRunning) {
+        startTime = new Date().getTime();
+        interval = setInterval(runTime, 1000);
+        isRunning = 1;
+        stopped = 0;
+    }
 }
 
 function runTime() {
+    //gets the time for each instance of the function
     currentTime = new Date().getTime();
-    difTime = currentTime - startTime;
-    
+    //check to see if timer is currently paused
+    if(pauseTime){
+        //if timer is paused add the pause time
+        difTime = (currentTime - startTime) + pauseTime;
+    }
+    else{
+        //calculate time difference
+        difTime = currentTime - startTime;
+    }
+
+    //math to display time correctly
     second = Math.floor((difTime / 1000) % 60);
-    minute = Math.floor((difTime / (1000*60)));
-    timeDisp.innerHTML = `${minute < 10 ? '0'+minute : minute}:${second < 10 ? '0'+second : second }`;
+    minute = Math.floor((difTime / (1000*60)) % 60);
+    hour = Math.floor(difTime / (1000*60*60));
+
+    //ternaries to display '00' when each column is less than 10
+    timeDisp.innerHTML = `${hour < 10 ? '0' + hour : hour}:${minute < 10 ? '0'+minute : minute}:${second < 10 ? '0'+second : second }`;
 }
 
 function stopTimer() {
+    if(!difTime){
+        //nothing should happen if the stopwatch never started
+    }
+    else if(!stopped){
     clearInterval(interval);
+    //sets the pause time to add to the time difference calculation so it doesn't start over on restart
+    pauseTime = difTime;
+    stopped = 1;
+    isRunning = 0;
+    }
+    else
+        startTimer();
 }
 
 function resetTimer() {
-    stopTimer();
+    //stops, clears, and resets everything to initial values
+    clearInterval(interval);
+    pauseTime = 0;
     difTime = 0;
-
-    timeDisp.innerHTML = "0:00";
+    stop = 0;
+    isRunning = 0;
+    timeDisp.innerHTML = "00:00:00";
 }
 
 /*
