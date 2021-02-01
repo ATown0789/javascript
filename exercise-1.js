@@ -16,7 +16,6 @@
                     console.log(i);
             }
         }
-        tekCamp();
 
 
 
@@ -48,6 +47,8 @@
             return false;
             else if (age >= 18)
             return true;
+            else
+            return false;
         }
 
         /************************************************************************************/
@@ -58,7 +59,6 @@
             return str.split('');
         }
 
-        console.log(strToArr('hello'));
 
 
 
@@ -76,8 +76,6 @@
 
            return parseInt(reverse.join(''));
         }
-
-            console.log(reversePhone(8176026329));
 
 
 
@@ -109,7 +107,6 @@
                 });
                 return oddEvenObj;
             }
-           console.log(oddEven([10,23,3,4]));
 
 
 
@@ -121,7 +118,6 @@
             for(let i = 0; i < numbers.length; i+=3) {
                 console.log(numbers[i]);
             }
-        //your code...
 
 
 
@@ -130,8 +126,6 @@
         //access the value of the last element of the array and set it to a variable called school.  print the school variable to the console.
 
         const school = foodArray[foodArray.length-1].program;
-
-        console.log(school);
         
         const adjectiveArray = [ 'salty', 'spicy', 'sour', 'sweet', 'rich','creamy','amazing'];
         // Using both the foodArray and the adjectiveArray, write "for" loop that console.log()'s a sentence for each corresponding value in the arrays. Add the word "is" or "are" depending on if the food is singular or plural.  i.e. "Potatoes are salty", "Lemon is sour".
@@ -297,9 +291,6 @@
             },
         }
 
-        myObject.gotSick();
-
-
 
         /************************************************************* */
 
@@ -336,28 +327,16 @@
         const nums1 = [1,2,3,4,5];
         // Square every number in the array.  Store the squares in a new array.
 
-        //your code...
-
         let square = nums1.map(num => num*num);
-
-        console.log(square);
 
 
         const fivePlus = [1,3,5,7,9,1,3,5,2,3,1,23,4,232,3,4,1,2,2,2,3,4,4,1,12,11,23,3,4,5];
         //Remove all numbers that are less than 5.  Store the results in a new array.
 
-        //your code...
-
         higherThanFive = fivePlus.filter(num => num > 5);
-
-        console.log(higherThanFive)
-
-
-
 
         // Create an array of 20 randomly generated integers.  Calculate the sum of the elements in the array.
 
-        //your code...
         const randArr = [];
         sumNum1 = 0;
         let randNum = 0;
@@ -366,8 +345,6 @@
             randArr.push(randNum);
             sumNum1 += randNum;
         }
-
-        console.log(randArr, " ", sumNum1);
 
 
         const showNums = [12,22,33,44,55,66,77,88,99,101];
@@ -422,20 +399,14 @@
             }
         }
 
-        const input = ['king','queen','pawn','pawn','pawn','bishop'] ;
-
-        console.log(chessCalc(input));
-
 
         /************************************************************* */
 
         const ones = [1,11,111,1111,11111,111111,1111111,11111111,111111111,1111111111];
         //reverse the array, without modifying / `mutating` the ones array.
 
-        const newOnes = [] 
-        ones.forEach(e => newOnes.unshift(e))
-
-        console.log(ones, " ", newOnes)
+        const newOnes = [];
+        ones.forEach(e => newOnes.unshift(e));
 
         /************************************************************* */
         //create a function called performer(cb) that takes in a callback function and runs that callback function.  The function should return the output of the callback function.
@@ -513,29 +484,18 @@
         /************************** */  
         // Find all devs older than 24
         const oldDevs = devs.filter(e => e.age > 24);
-        //your code here...
-
-        console.log(oldDevs);
 
         /************************** */  
         // Remove all people who are not developers (i.e. no tech stack)
 
-        //your code here...
-
-        const onlyDevs = devs.filter(e => e['tech_stack'] !== null)
-
-        console.log(onlyDevs)
+        const onlyDevs = devs.filter(e => e['tech_stack'] !== null);
 
         /************************** */  
         // Calculate the total age of all the devs
 
-        //your code here...
-
         let sumNum3 = 0;
 
-        devs.forEach(e => sumNum3 += e.age)
-
-        console.log(sumNum3)
+        devs.forEach(e => sumNum3 += e.age);
 
 
         /************************** */  
@@ -544,15 +504,11 @@
 
         const femDev = devs.filter(e => e.gender === 'f' || e.gender === 'F');
 
-        console.log(femDev)
-
 
         /************************** */  
         // lowercase the genders of every dev
 
-        devs.forEach(e => e.gender = e.gender.toLowerCase())
-
-        console.log(devs)
+        devs.forEach(e => e.gender = e.gender.toLowerCase());
  
         /************************** */  
         // Sort the developers by name
@@ -562,14 +518,10 @@
                 return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
             });
 
-            console.log(devs);
-
         /************************** */  
         // Sort the devs by age in descending order
 
         devs.sort((a,b) => b.age - a.age);
-
-        console.log(devs)
 
 
         /************************** */  
@@ -578,8 +530,6 @@
         const malDev = devs.filter(e => e.gender === 'm');
 
         malDev.sort((a,b) => a.age - b.age);
-        
-        console.log(malDev);
 
 
         /************************** */  
@@ -635,8 +585,6 @@
 
         }
 
-        console.log(maxNumber(numbersMixed));
-
         //After the numbers array has been cleaned up to only have numbers in it, Write a function that sorts the modified numbers array.  Allow the function to sort the array in descending order as well.
 
         function sortNums(numbers,desc = false) {
@@ -646,8 +594,6 @@
             else
                 return onlyNums.sort((a,b) => a - b);
         };
-
-        console.log(sortNums(numbersMixed))
 
         /************************************************************* */
         //Research a new feature of ES6+ and create an example of it's use case here.  Be sure to write comments explaining what the feature is and why it is useful.
@@ -695,8 +641,6 @@
 
         mapObj.forEach(value => mapArr.push(`${value}`));
 
-        console.log(mapArr);
-
         /************************************************************* */
         //Create 4 mathematical function expressions, add,subtract,multiply,divide.  put them in an array, and create a doMath() function that randomly selects one of the mathematical operations whenever it is invoked.  The doMath() function should print to the console the mathetmatical function that was carried out.  The doMath() function should return the computed value of any operation performed.
 
@@ -729,8 +673,6 @@
             console.log(operText, operations[randInt](x, y))
         };
 
-        doMath(3,5);
-
         /************************************************************* */
         //- Create a Higher Order Function called multiple(x) that takes a single parameter.  This HOF should return another function fn(y) that accepts another single parameter y.  This inner function should compute the product of it's parameter with the parameter passed into multiple.  Use this returned "first-class" function to compute triples of any given number.
 
@@ -743,9 +685,6 @@
        function getTripple(num) {
            
             return multiple(num)(3);
-       }
-
-       console.log(getTripple(6));
 
         //- Write an outer function called stockGain that has cost basis (basis) as a parameter; declare a variable called message that holds " is how much the stock has increased".  Return an inner function with years (yrs) as a parameter and declare a variable for growth rate (r) of 5%. Console log your calculation.
 
@@ -762,12 +701,13 @@
 
         const futureValue = stockGain(10000)(30);
 
-        console.log(futureValue);
-
 
 // DO NOT DELETE THIS EXPORT
 module.exports = {
     tekCamp,
+    farenheitCelsius,
+    celsiusFarenheit,
+    strToArr,
     canVote
 }
 
