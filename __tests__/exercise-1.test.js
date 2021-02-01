@@ -72,9 +72,11 @@ describe("canVote()", () => {
 
 // YOUR CODE HERE.  follow the template below to flush out your tests.
 
-describe("your function name ()", () => {
+describe("farenheitCelsius()", () => {
 
-    test("test case #1", () => {
+    test("212 farenheit should return 100 celsius", () => {
+
+        expect(exerciseOne.farenheitCelsius(212).toBe(100));
 
     });
 

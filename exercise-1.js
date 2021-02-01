@@ -685,7 +685,7 @@
        function getTripple(num) {
            
             return multiple(num)(3);
-
+       }
         //- Write an outer function called stockGain that has cost basis (basis) as a parameter; declare a variable called message that holds " is how much the stock has increased".  Return an inner function with years (yrs) as a parameter and declare a variable for growth rate (r) of 5%. Console log your calculation.
 
         function stockGain(basis){
