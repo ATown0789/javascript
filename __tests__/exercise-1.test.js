@@ -52,6 +52,42 @@ describe("tekCamp()", () => {
 });
 
 
+// YOUR CODE HERE.  follow the template below to flush out your tests.
+
+describe("farenheitCelsius()", () => {
+
+    test("farenheitCelsius(212) should return 100 celsius", () => {
+
+        expect(exerciseOne.farenheitCelsius(212)).toBe(100);
+
+    });
+
+    test("farenheitCelsius(68) should return 20 celsius", () => {
+        expect(exerciseOne.farenheitCelsius(68)).toBe(20);
+    });
+
+});
+
+describe("celsiusFarenheit()", () => {
+
+    test("celsiusFarenheit(20) should return 68", () => {
+        expect(exerciseOne.celsiusFarenheit(20)).toBe(68);
+    });
+
+    test("celsiusFarenheit(100) should return 212", () => {
+        expect(exerciseOne.celsiusFarenheit(100)).toBe(212);
+    });
+
+});
+
+describe("strToArr", () => {
+
+    test("strToArr('hello') should return an array", () => {
+        expect(Array.isArray(exerciseOne.strToArr('hello'))).toBe(true);
+    });
+
+});
+
 describe("canVote()", () => {
 
     test("canVote() returns false", () => {
@@ -66,31 +102,52 @@ describe("canVote()", () => {
         expect(exerciseOne.canVote()).toBe(false);
     })
 
+});
+
+describe("reversePhone", () => {
+
+    test("reversePhone('8176026329') should return '9236206718'", () => {
+        expect(exerciseOne.reversePhone(8176026329)).toBe(9236206718);
+    });
 
 });
 
+describe("makeCar", () => {
 
-// YOUR CODE HERE.  follow the template below to flush out your tests.
-
-describe("farenheitCelsius()", () => {
-
-    test("212 farenheit should return 100 celsius", () => {
-
-        expect(exerciseOne.farenheitCelsius(212).toBe(100));
-
+    test("makeCar('dodge','ram','2007','tan') should return an object", () => {
+        expect(exerciseOne.makeCar('dodge','ram','2007','tan')).toEqual({
+            make: 'dodge',
+            model: 'ram',
+            year: '2007',
+            color: 'tan'
+        });
     });
 
-    test("test case #2", () => {
+});
 
+describe("oddEven", () => {
+
+    test("oddEVen([10,23,3,4]) should return an object", () => {
+        expect(exerciseOne.oddEven([10,23,3,4])).toEqual({
+            10: 'even',
+            23: 'odd',
+            3: 'odd',
+            4: 'even'
+        });
+    });
+});
+
+describe("chessCalc", () => {
+
+    test("chessCalc(['iPhone','queen','pawn']) should return 10", () => {
+        expect(exerciseOne.chessCalc(['iPhone','queen','pawn'])).toBe(10);
     });
 
-})
-
-
-
-
-
-
-
-
-
+    test("chessCalc(['android']) should return null", () => {
+        expect(exerciseOne.chessCalc(['android'])).toBe(null);
+    });
+    
+    test("chessCalc(['king','queen','pawn','pawn','pawn','bishop']) should return 15", () => {
+        expect(exerciseOne.chessCalc(['king','queen','pawn','pawn','pawn','bishop'])).toBe(15);
+    });
+});

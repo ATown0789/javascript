@@ -708,7 +708,11 @@ module.exports = {
     farenheitCelsius,
     celsiusFarenheit,
     strToArr,
-    canVote
+    canVote,
+    reversePhone,
+    makeCar,
+    oddEven,
+    chessCalc
 }
 
 
